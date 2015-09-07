@@ -2,6 +2,8 @@
 
 #include "calc.h"
 
+char *opnames[] = {"add", "sub", "mult", "div"};
+
 int main(int argc, char *argv[]) {
 	int a = 2;
 	int b = 3;
@@ -9,21 +11,12 @@ int main(int argc, char *argv[]) {
 
 	printf("running calculations on %d and %d\n", a, b);
 
-	calc.calculate = add;
-	int res = calc.calculate(a, b);
-	printf("add: %d\n", res);
-
-	calc.calculate = sub;
-	res = calc.calculate(a, b);
-	printf("sub: %d\n", res);
-
-	calc.calculate = mult;
-	res = calc.calculate(a, b);
-	printf("mult: %d\n", res);
-
-	calc.calculate = div;
-	res = calc.calculate(a, b);
-	printf("div: %d\n", res);
+	int res;
+	for (int i = 0; i < 4; ++i) {
+		calc.calculate = &add + 0x20*i;
+		res = calc.calculate(a, b);
+		printf("%s:\t%d\n", opnames[i], res);
+	}
 
 	return 0;
 }
