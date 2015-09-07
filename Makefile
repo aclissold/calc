@@ -1,6 +1,9 @@
+OUT = calc
+BUILD = cc calc.c main.c -o $(OUT)
+
 all:
-	cc calc.c main.c -o calc
-run:
-	cc calc.c main.c -o calc && ./calc
+	$(BUILD)
+build_and_run:
+	$(BUILD) && ./$(OUT)
 clean:
-	rm calc
+	rm -f $(OUT)
