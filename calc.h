@@ -3,8 +3,9 @@
 
 /* A Calculator performs an Operation. */
 typedef int (*Operation)(int a, int b);
-typedef struct _calculator {
-	Operation calculate;
+typedef struct calculator {
+    Operation calculate;
+    int result;
 } Calculator;
 
 /* Operations. */
